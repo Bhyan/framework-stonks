@@ -33,18 +33,18 @@ public class DespesaAtivo extends AbstractEntity {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataTransacao;
 //
-//    @Enumerated(EnumType.STRING)
-//    private Operacao operacao;
+    @Enumerated(EnumType.STRING)
+    private Operacao operacao;
 
 
     public DespesaAtivo(
             @NotNull(message = "Despesa é obrigatoria.") Despesa despesa,
-            @NotNull(message = "Ativo é obrigatorio.") AtivoAbstract ativo,
+            @NotNull(message = "Ativo é obrigatorio.") AtivoAbstract ativoAbstract,
             double valor,
             int quantidade,
             Date dataTransacao) {
         this.despesa = despesa;
-        this.ativo = ativo;
+        this.ativoAbstract = ativoAbstract;
         this.valor = valor;
         this.quantidade = quantidade;
         this.dataTransacao = dataTransacao;
@@ -76,6 +76,14 @@ public class DespesaAtivo extends AbstractEntity {
 
     public void setAtivoAbstract(AtivoAbstract ativoAbstract) {
         this.ativoAbstract = ativoAbstract;
+    }
+
+    public Operacao getOperacao() {
+        return operacao;
+    }
+
+    public void setOperacao(Operacao operacao) {
+        this.operacao = operacao;
     }
 
     public double getValor() {
