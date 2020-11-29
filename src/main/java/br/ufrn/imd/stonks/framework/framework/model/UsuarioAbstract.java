@@ -2,11 +2,11 @@ package br.ufrn.imd.stonks.framework.framework.model;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -24,24 +24,13 @@ public abstract class UsuarioAbstract extends AbstractEntity {
     @Column(unique = true)
     private String password;
 
-//    @NotNull(message = "CPF é obrigatorio.")
-//    private String cpf;
-
     @Column(name = "status")
     private Boolean status;
-
-//    @Column( name = "data_nascimento")
-//    private Date dataNascimento;
-
-//    @ManyToMany( cascade = CascadeType.ALL)
-//    @JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private Set<Role> roles;
 
     public UsuarioAbstract(@NotNull(message = "Nome é obrigatorio.") String nome,
                            @NotNull(message = "Email é obrigatorio.") @Email(message = "Email invalido") String email,
                            @NotNull(message = "Senha é obrigatorio.") String password,
-                           @NotNull(message = "CPF é obrigatorio.") String cpf,
-                           Boolean status, Date dataNascimento) {
+                           Boolean status) {
         this.nome = nome;
         this.email = email;
         this.password = password;

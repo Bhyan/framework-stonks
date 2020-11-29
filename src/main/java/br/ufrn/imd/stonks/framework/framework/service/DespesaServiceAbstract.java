@@ -33,8 +33,6 @@ public abstract class DespesaServiceAbstract {
             despesa = new Despesa(usuarioAbstract);
             salvarDespesa(despesa);
         }
-//        despesaAtivo.setOperacao(Operacao.COMPRA);
-//        despesaAtivo.setDespesa(despesa);
 
         despesaAtivo = adicionarAtivo(despesa, despesaAtivo);
 

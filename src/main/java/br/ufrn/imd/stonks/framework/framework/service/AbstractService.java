@@ -17,7 +17,7 @@ public abstract class AbstractService<T extends AbstractEntity> {
 
     public Optional<T> getById(Integer id) throws AbstractEntityException {
         if (id == null) {
-            return null;
+            return Optional.empty();
         }
 
         if (!getRepository().existsById(id)) {
@@ -28,14 +28,12 @@ public abstract class AbstractService<T extends AbstractEntity> {
     }
 
     public void add(T entity) throws AbstractEntityException {
-
         verifyFields(entity);
         validateEntity(entity);
         getRepository().save(entity);
     }
 
     public void update(T entity) throws AbstractEntityException {
-
         getById(entity.getId());
         validateEntity(entity);
         getRepository().save(updateValues(getRepository().getOne(entity.getId()), entity));

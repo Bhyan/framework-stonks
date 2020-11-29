@@ -2,7 +2,6 @@ package br.ufrn.imd.stonks.framework.framework.service;
 
 import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivo;
 import br.ufrn.imd.stonks.framework.framework.repository.DespesaAtivoRepository;
-import br.ufrn.imd.stonks.framework.framework.repository.DespesaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
