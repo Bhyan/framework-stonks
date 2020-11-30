@@ -15,7 +15,7 @@ public interface DespesaAtivoRepository extends AbstractRepository<DespesaAtivo>
     @Query("SELECT ca, a.codigo FROM DespesaAtivo ca JOIN AtivoAbstract a ON ca.ativoAbstract.id = a.id WHERE ca.despesa.id = :id AND ca.operacao = 'COMPRA'")
     public List<DespesaAtivo> findByAtivosCarteiraCompra(@Param("id") int id);
 
-    @Query("SELECT ca, a.codigo FROM DespesaAtivo ca JOIN Ativo a ON ca.ativoAbstract.id = a.id WHERE ca.despesa.id = :id")
+    @Query("SELECT ca, a.codigo FROM DespesaAtivo ca JOIN AtivoAbstract a ON ca.ativoAbstract.id = a.id WHERE ca.despesa.id = :id")
     public List<DespesaAtivo> findAllByDespesaCompra(@Param("id") int id, Sort sort);
 
     public DespesaAtivo[] findAllByDespesa(Despesa despesa);
