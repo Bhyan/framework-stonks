@@ -3,12 +3,7 @@ package br.ufrn.imd.stonks.framework.framework.model;
 import javax.persistence.*;
 
 @Entity
-@Inheritance
 public abstract class AtivoAbstract extends AbstractEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
     @Column(unique = true, nullable = false)
     private String codigo;
@@ -22,16 +17,6 @@ public abstract class AtivoAbstract extends AbstractEntity {
     public AtivoAbstract(String codigo, EmpresaAbstract empresaAbstract) {
         this.codigo = codigo;
         this.empresaAbstract = empresaAbstract;
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getCodigo() {

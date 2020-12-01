@@ -5,11 +5,13 @@ import br.ufrn.imd.stonks.framework.framework.model.UsuarioAbstract;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 
+@Service
 public abstract class EmailServiceAbstract {
 
     public Boolean enviarEmail(String mensagemEmail, UsuarioAbstract usuario, String destinatario, String assunto) {

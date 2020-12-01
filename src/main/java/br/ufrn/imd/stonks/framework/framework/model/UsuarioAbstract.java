@@ -1,15 +1,12 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@Entity
 public abstract class UsuarioAbstract extends AbstractEntity {
 
     @NotNull(message = "Nome é obrigatorio.")
@@ -38,10 +35,6 @@ public abstract class UsuarioAbstract extends AbstractEntity {
     }
 
     public UsuarioAbstract() { }
-
-    public abstract Integer getId();
-
-    public abstract void setId(Integer id);
 
     public String getNome() {
         return nome;

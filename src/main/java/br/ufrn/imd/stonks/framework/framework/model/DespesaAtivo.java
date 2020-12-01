@@ -9,10 +9,6 @@ import java.util.Date;
 @Entity
 public class DespesaAtivo extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     @NotNull
     @ManyToOne
     @JoinColumn(name = "despesa_id")
@@ -47,16 +43,6 @@ public class DespesaAtivo extends AbstractEntity {
     }
 
     public DespesaAtivo() { }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Despesa getDespesa() {
         return despesa;

@@ -1,14 +1,11 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Inheritance
 public abstract class EmpresaAbstract extends AbstractEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
     @Column(nullable = false, unique = true)
     private String nome;
@@ -16,27 +13,17 @@ public abstract class EmpresaAbstract extends AbstractEntity {
     @Column(nullable = false)
     private Long cnpj;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "empresa")
-    private List<AtivoAbstract> ativoAbstracts;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "ativo_id")
+    private AtivoAbstract ativoAbstract;
 
     public EmpresaAbstract() { }
 
-    public EmpresaAbstract(String nome, Long cnpj, List<AtivoAbstract> ativoAbstracts) {
+    public EmpresaAbstract(String nome, Long cnpj, AtivoAbstract ativoAbstract) {
         this.nome = nome;
         this.cnpj = cnpj;
-        this.ativoAbstracts = ativoAbstracts;
-    }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
+        this.ativoAbstract = ativoAbstract;
     }
 
     public String getNome() {
@@ -55,11 +42,11 @@ public abstract class EmpresaAbstract extends AbstractEntity {
         this.cnpj = cnpj;
     }
 
-    public List<AtivoAbstract> getAtivos() {
-        return ativoAbstracts;
+    public AtivoAbstract getAtivoAbstract() {
+        return ativoAbstract;
     }
 
-    public void setAtivos(List<AtivoAbstract> ativoAbstracts) {
-        this.ativoAbstracts = ativoAbstracts;
+    public void setAtivoAbstract(AtivoAbstract ativoAbstract) {
+        this.ativoAbstract = ativoAbstract;
     }
 }

@@ -4,9 +4,11 @@ import br.ufrn.imd.stonks.framework.framework.model.Despesa;
 import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivo;
 import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoValorAbstract;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public abstract class RelatorioServiceAbstract {
 
     @Autowired

@@ -8,10 +8,6 @@ import java.util.Set;
 @Entity
 public class Despesa extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     @NotNull(message = "É preciso definir um usuario.")
     @ManyToOne
     @JoinColumn(name = "usuario_id")
@@ -20,24 +16,16 @@ public class Despesa extends AbstractEntity {
     @Column(name = "status")
     private Boolean status;
 
-    @OneToMany(mappedBy = "carteira", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<DespesaAtivo> carteiraAtivos;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "carteira_id")
+    private DespesaAtivo carteiraAtivos;
 
     public Despesa(@NotNull(message = "É preciso definir um usuario.") UsuarioAbstract usuario) {
         this.usuario = usuario;
         this.status = true;
     }
     public Despesa() { }
-
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public UsuarioAbstract getUsuario() {
         return usuario;
@@ -55,11 +43,11 @@ public class Despesa extends AbstractEntity {
         this.status = status;
     }
 
-    public Set<DespesaAtivo> getCarteiraAtivos() {
+    public DespesaAtivo getCarteiraAtivos() {
         return carteiraAtivos;
     }
 
-    public void setCarteiraAtivos(Set<DespesaAtivo> carteiraAtivos) {
+    public void setCarteiraAtivos(DespesaAtivo carteiraAtivos) {
         this.carteiraAtivos = carteiraAtivos;
     }
 }

@@ -16,6 +16,10 @@ public abstract class AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     @CreatedDate
     @Column(nullable = true, updatable = false, name = "data_criacao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -69,7 +73,11 @@ public abstract class AbstractEntity implements Serializable {
     }
 
     @JsonIgnore
-    public abstract Integer getId();
+    public int getId() {
+        return id;
+    }
 
-    public abstract void setId(Integer id);
+    public void setId(int id) {
+        this.id = id;
+    }
 }
