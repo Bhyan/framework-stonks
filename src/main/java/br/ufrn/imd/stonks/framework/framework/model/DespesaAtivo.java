@@ -32,10 +32,6 @@ public class DespesaAtivo extends AbstractEntity {
     @Column( name = "data_transacao")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataTransacao;
-//
-    @Enumerated(EnumType.STRING)
-    private Operacao operacao;
-
 
     public DespesaAtivo(
             @NotNull(message = "Despesa é obrigatoria.") Despesa despesa,
@@ -76,14 +72,6 @@ public class DespesaAtivo extends AbstractEntity {
 
     public void setAtivoAbstract(AtivoAbstract ativoAbstract) {
         this.ativoAbstract = ativoAbstract;
-    }
-
-    public Operacao getOperacao() {
-        return operacao;
-    }
-
-    public void setOperacao(Operacao operacao) {
-        this.operacao = operacao;
     }
 
     public double getValor() {

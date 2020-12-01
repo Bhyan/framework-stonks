@@ -10,7 +10,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 
-public abstract class EmailServiceAbstract extends AbstractService {
+public abstract class EmailServiceAbstract {
 
     public Boolean enviarEmail(String mensagemEmail, UsuarioAbstract usuario, String destinatario, String assunto) {
         JavaMailSenderImpl mailSender = configurarHost();

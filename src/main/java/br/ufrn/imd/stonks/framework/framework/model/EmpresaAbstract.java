@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Empresa extends AbstractEntity {
+@Inheritance
+public abstract class EmpresaAbstract extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,7 +21,13 @@ public class Empresa extends AbstractEntity {
             mappedBy = "empresa")
     private List<AtivoAbstract> ativoAbstracts;
 
-    public Empresa() { }
+    public EmpresaAbstract() { }
+
+    public EmpresaAbstract(String nome, Long cnpj, List<AtivoAbstract> ativoAbstracts) {
+        this.nome = nome;
+        this.cnpj = cnpj;
+        this.ativoAbstracts = ativoAbstracts;
+    }
 
     @Override
     public Integer getId() {

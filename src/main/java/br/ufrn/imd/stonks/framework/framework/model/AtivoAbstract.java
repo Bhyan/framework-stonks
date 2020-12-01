@@ -1,11 +1,10 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
 @Inheritance
-public abstract class AtivoAbstract extends AbstractEntity{
+public abstract class AtivoAbstract extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +15,14 @@ public abstract class AtivoAbstract extends AbstractEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empresa_id", nullable = false)
-    private Empresa empresa;
+    private EmpresaAbstract empresaAbstract;
 
     public AtivoAbstract() { }
+
+    public AtivoAbstract(String codigo, EmpresaAbstract empresaAbstract) {
+        this.codigo = codigo;
+        this.empresaAbstract = empresaAbstract;
+    }
 
     @Override
     public Integer getId() {
@@ -38,11 +42,11 @@ public abstract class AtivoAbstract extends AbstractEntity{
         this.codigo = codigo;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public EmpresaAbstract getEmpresa() {
+        return empresaAbstract;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setEmpresa(EmpresaAbstract empresaAbstract) {
+        this.empresaAbstract = empresaAbstract;
     }
 }
