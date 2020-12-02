@@ -12,8 +12,8 @@ public class Despesa extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull(message = "É preciso definir um usuario.")
     @ManyToOne
+    @NotNull(message = "É preciso definir um usuario.")
     @JoinColumn(name = "usuario_id")
     private UsuarioAbstract usuario;
 
