@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public abstract class DespesaServiceAbstract {
+public abstract class DespesaServiceAbstract<T> {
 
     @Autowired
     private DespesaRepository despesaRepository;

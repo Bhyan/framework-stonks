@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Inheritance
-public abstract class EmpresaAbstract extends AbstractEntity {
+public class EmpresaAbstract extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

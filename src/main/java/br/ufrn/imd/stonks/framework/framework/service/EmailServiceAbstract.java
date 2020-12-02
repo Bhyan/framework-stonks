@@ -10,7 +10,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 
-public abstract class EmailServiceAbstract {
+public abstract class EmailServiceAbstract<T> {
 
     public Boolean enviarEmail(String mensagemEmail, UsuarioAbstract usuario, String destinatario, String assunto) {
         JavaMailSenderImpl mailSender = configurarHost();
@@ -37,7 +37,7 @@ public abstract class EmailServiceAbstract {
         return false;
     }
 
-    public abstract String montarCorpoEmail(List<DespesaAtivo> entities);
+    public abstract String montarCorpoEmail(List<T> entities);
 
     public abstract JavaMailSenderImpl configurarHost();
 }
