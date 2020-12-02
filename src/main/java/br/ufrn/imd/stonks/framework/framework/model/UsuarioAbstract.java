@@ -23,7 +23,9 @@ public class UsuarioAbstract extends AbstractEntity {
 
     @Column(name = "status")
     private Boolean status;
+
     @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
 
     public UsuarioAbstract(@NotNull(message = "Nome é obrigatorio.") String nome,
