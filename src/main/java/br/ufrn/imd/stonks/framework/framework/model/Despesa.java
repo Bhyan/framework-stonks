@@ -20,7 +20,7 @@ public class Despesa extends AbstractEntity {
     @Column(name = "status")
     private Boolean status;
 
-    @OneToMany(mappedBy = "carteira", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "despesa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<DespesaAtivo> carteiraAtivos;
 
     public Despesa(@NotNull(message = "É preciso definir um usuario.") UsuarioAbstract usuario) {

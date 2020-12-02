@@ -18,7 +18,7 @@ public class EmpresaAbstract extends AbstractEntity {
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            mappedBy = "empresa")
+            mappedBy = "empresaAbstract")
     private List<AtivoAbstract> ativoAbstracts;
 
     public EmpresaAbstract() { }
