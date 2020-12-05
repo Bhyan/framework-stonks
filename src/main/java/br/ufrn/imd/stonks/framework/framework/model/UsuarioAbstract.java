@@ -1,13 +1,12 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-public class UsuarioAbstract extends AbstractEntity {
+@Table(name = "usuario")
+public abstract class UsuarioAbstract extends AbstractEntity {
 
     @NotNull(message = "Nome é obrigatorio.")
     private String nome;

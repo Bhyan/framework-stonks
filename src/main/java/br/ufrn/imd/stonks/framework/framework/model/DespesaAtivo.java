@@ -7,7 +7,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-public class DespesaAtivo extends AbstractEntity {
+@Table(name = "carteira_ativo")
+public abstract class DespesaAtivo extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

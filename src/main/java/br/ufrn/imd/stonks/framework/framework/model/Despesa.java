@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+@Table(name = "carteira")
 public class Despesa extends AbstractEntity {
 
     @Id

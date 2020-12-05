@@ -3,7 +3,7 @@ package br.ufrn.imd.stonks.framework.framework.model;
 import javax.persistence.*;
 
 @Entity
-@Inheritance
+@Table(name = "ativo")
 public class AtivoAbstract extends AbstractEntity {
 
     @Id

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Inheritance
+@Table(name = "empresa")
 public class EmpresaAbstract extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

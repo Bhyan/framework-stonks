@@ -1,6 +1,13 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
-public class DespesaAtivoValorAbstract {
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public abstract class DespesaAtivoValorAbstract {
     private DespesaAtivo despesaAtivo;
     private Float valor;
 
