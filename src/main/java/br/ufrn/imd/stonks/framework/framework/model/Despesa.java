@@ -18,16 +18,13 @@ public class Despesa extends AbstractEntity {
     @JoinColumn(name = "usuario_id")
     private UsuarioAbstract usuario;
 
-    @Column(name = "status")
-    private Boolean status;
-
     @OneToMany(mappedBy = "despesa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<DespesaAtivo> carteiraAtivos;
 
     public Despesa(@NotNull(message = "É preciso definir um usuario.") UsuarioAbstract usuario) {
         this.usuario = usuario;
-        this.status = true;
     }
+
     public Despesa() { }
 
     @Override
@@ -46,14 +43,6 @@ public class Despesa extends AbstractEntity {
 
     public void setUsuario(UsuarioAbstract usuario) {
         this.usuario = usuario;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     public Set<DespesaAtivo> getCarteiraAtivos() {

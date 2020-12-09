@@ -20,9 +20,6 @@ public abstract class UsuarioAbstract extends AbstractEntity {
     @Column(unique = true)
     private String password;
 
-    @Column(name = "status")
-    private Boolean status;
-
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
@@ -34,7 +31,6 @@ public abstract class UsuarioAbstract extends AbstractEntity {
         this.nome = nome;
         this.email = email;
         this.password = password;
-        this.status = status;
     }
 
     public UsuarioAbstract() { }
@@ -61,14 +57,6 @@ public abstract class UsuarioAbstract extends AbstractEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     @Override

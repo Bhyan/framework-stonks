@@ -29,7 +29,7 @@ public abstract class AbstractEntity implements Serializable {
     private Date dataModificacao;
 
     @Column
-    private Boolean ativo = true;
+    private Boolean status = true;
 
     @JsonIgnore
     public Date getDataCriacao() {
@@ -55,17 +55,17 @@ public abstract class AbstractEntity implements Serializable {
     }
 
     @JsonIgnore
-    public Boolean getAtivo() {
-        return ativo;
+    public Boolean getStatus() {
+        return status;
     }
 
     @JsonIgnore
     public Boolean isAtivo() {
-        return ativo;
+        return status;
     }
 
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
+    public void setStatus(Boolean ativo) {
+        this.status = ativo;
     }
 
     @JsonIgnore
