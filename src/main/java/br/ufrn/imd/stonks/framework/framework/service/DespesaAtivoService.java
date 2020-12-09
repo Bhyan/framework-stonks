@@ -1,6 +1,7 @@
 package br.ufrn.imd.stonks.framework.framework.service;
 
 import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivo;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoValorAbstract;
 import br.ufrn.imd.stonks.framework.framework.repository.DespesaAtivoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class DespesaAtivoService {
+public abstract class DespesaAtivoService {
 
     @Autowired
     DespesaAtivoRepository despesaAtivoRepository;
@@ -43,4 +44,6 @@ public class DespesaAtivoService {
 
         return despesaAtivoRepository.findAllByDespesaCompra(id, sort);
     }
+
+    public abstract List<DespesaAtivoValorAbstract> gerarDadosRelatorio(List<DespesaAtivo> ativos);
 }
