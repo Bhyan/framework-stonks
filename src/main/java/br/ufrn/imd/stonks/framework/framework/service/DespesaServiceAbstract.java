@@ -20,6 +20,7 @@ public abstract class DespesaServiceAbstract<T> {
     public abstract boolean removerAtivo(DespesaAtivo despesaAtivo);
 
     public abstract Despesa despesaByUsuario();
+    public abstract void salvarDespesa(Despesa despesa);
 
     public AbstractEntity visualisarCarteira() {
 
@@ -53,7 +54,7 @@ public abstract class DespesaServiceAbstract<T> {
         }
     }
 
-    public void salvarDespesa(Despesa despesa) {
-        despesaRepository.save(despesa);
-    }
+//    public void salvarDespesa(Despesa despesa) {
+//        despesaRepository.save(despesa);
+//    }
 }
