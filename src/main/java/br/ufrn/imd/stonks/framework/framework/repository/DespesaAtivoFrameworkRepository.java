@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface DespesaAtivoFrameworkRepository extends RepositoryFramework<DespesaAtivoFramework> {
 
-    @Query("SELECT ca, a.codigo FROM DespesaAtivoFramework ca JOIN AtivoFramework a ON ca.ativoAbstract.id = a.id WHERE ca.despesa.id = :id AND ca.operacao = 'COMPRA'")
+    @Query("SELECT ca, a.codigo FROM DespesaAtivoFramework ca JOIN AtivoFramework a ON ca.ativo.id = a.id WHERE ca.despesa.id = :id")
     public List<DespesaAtivoFramework> findByAtivosCarteiraCompra(@Param("id") int id);
 
-    @Query("SELECT ca, a.codigo FROM DespesaAtivoFramework ca JOIN AtivoFramework a ON ca.ativoAbstract.id = a.id WHERE ca.despesa.id = :id")
+    @Query("SELECT ca, a.codigo FROM DespesaAtivoFramework ca JOIN AtivoFramework a ON ca.ativo.id = a.id WHERE ca.despesa.id = :id")
     public List<DespesaAtivoFramework> findAllByDespesaCompra(@Param("id") int id, Sort sort);
 
     public DespesaAtivoFramework[] findAllByDespesa(DespesaFramework despesa);

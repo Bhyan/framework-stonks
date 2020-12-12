@@ -18,7 +18,7 @@ public class EmpresaFramework extends AbstractEntity {
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            mappedBy = "empresaFramework")
+            mappedBy = "empresa")
     private List<AtivoFramework> ativo;
 
     public EmpresaFramework() { }

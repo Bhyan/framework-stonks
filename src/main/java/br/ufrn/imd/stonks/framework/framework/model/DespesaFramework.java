@@ -17,7 +17,7 @@ public class DespesaFramework extends AbstractEntity {
     @JoinColumn(name = "usuario_id")
     private UsuarioFramework usuario;
 
-    @OneToMany(mappedBy = "despesaFramework", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "despesa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<DespesaAtivoFramework> carteiraAtivos;
 
     public DespesaFramework(@NotNull(message = "É preciso definir um usuario.") UsuarioFramework usuario) {
