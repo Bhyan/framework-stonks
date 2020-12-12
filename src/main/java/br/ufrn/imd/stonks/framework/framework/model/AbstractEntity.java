@@ -49,18 +49,8 @@ public abstract class AbstractEntity implements Serializable {
         this.dataModificacao = dataModificacao;
     }
 
-    @PreUpdate
-    public void preUpdate() {
-        this.dataModificacao = new Date();
-    }
-
     @JsonIgnore
     public Boolean getStatus() {
-        return status;
-    }
-
-    @JsonIgnore
-    public Boolean isAtivo() {
         return status;
     }
 
@@ -68,8 +58,5 @@ public abstract class AbstractEntity implements Serializable {
         this.status = ativo;
     }
 
-    @JsonIgnore
     public abstract Integer getId();
-
-    public abstract void setId(Integer id);
 }

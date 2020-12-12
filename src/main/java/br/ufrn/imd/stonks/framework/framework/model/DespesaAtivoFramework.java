@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "carteira_ativo")
-public abstract class DespesaAtivo extends AbstractEntity {
+public class DespesaAtivoFramework extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,12 +17,12 @@ public abstract class DespesaAtivo extends AbstractEntity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "despesa_id")
-    private Despesa despesa;
+    private DespesaFramework despesa;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "ativo_id")
-    private AtivoAbstract ativoAbstract;
+    private AtivoFramework ativo;
 
     @Column(name = "valor")
     private double valor;
@@ -34,45 +34,43 @@ public abstract class DespesaAtivo extends AbstractEntity {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataTransacao;
 
-    public DespesaAtivo(
-            @NotNull(message = "Despesa é obrigatoria.") Despesa despesa,
-            @NotNull(message = "Ativo é obrigatorio.") AtivoAbstract ativoAbstract,
+    public DespesaAtivoFramework(
+            @NotNull(message = "DespesaFramework é obrigatoria.") DespesaFramework despesa,
+            @NotNull(message = "Ativo é obrigatorio.") AtivoFramework ativo,
             double valor,
             int quantidade,
             Date dataTransacao) {
         this.despesa = despesa;
-        this.ativoAbstract = ativoAbstract;
+        this.ativo = ativo;
         this.valor = valor;
         this.quantidade = quantidade;
         this.dataTransacao = dataTransacao;
     }
 
-    public DespesaAtivo() { }
+    public DespesaAtivoFramework() { }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Despesa getDespesa() {
+    public DespesaFramework getDespesa() {
         return despesa;
     }
 
-    public void setDespesa(Despesa despesa) {
+    public void setDespesa(DespesaFramework despesa) {
         this.despesa = despesa;
     }
 
-    public AtivoAbstract getAtivoAbstract() {
-        return ativoAbstract;
+    public AtivoFramework getAtivo() {
+        return ativo;
     }
 
-    public void setAtivoAbstract(AtivoAbstract ativoAbstract) {
-        this.ativoAbstract = ativoAbstract;
+    public void setAtivo(AtivoFramework ativo) {
+        this.ativo = ativo;
     }
 
     public double getValor() {

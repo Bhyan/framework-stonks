@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ativo")
-public class AtivoAbstract extends AbstractEntity {
+public class AtivoFramework extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,21 +15,19 @@ public class AtivoAbstract extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empresa_id", nullable = false)
-    private EmpresaAbstract empresaAbstract;
+    private EmpresaFramework empresa;
 
-    public AtivoAbstract() { }
+    public AtivoFramework() { }
 
-    public AtivoAbstract(String codigo, EmpresaAbstract empresaAbstract) {
+    public AtivoFramework(String codigo, EmpresaFramework empresa) {
         this.codigo = codigo;
-        this.empresaAbstract = empresaAbstract;
+        this.empresa = empresa;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -42,11 +40,11 @@ public class AtivoAbstract extends AbstractEntity {
         this.codigo = codigo;
     }
 
-    public EmpresaAbstract getEmpresa() {
-        return empresaAbstract;
+    public EmpresaFramework getEmpresa() {
+        return empresa;
     }
 
-    public void setEmpresa(EmpresaAbstract empresaAbstract) {
-        this.empresaAbstract = empresaAbstract;
+    public void setEmpresa(EmpresaFramework empresaAbstract) {
+        this.empresa = empresaAbstract;
     }
 }

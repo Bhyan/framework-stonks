@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "empresa")
-public class EmpresaAbstract extends AbstractEntity {
+public class EmpresaFramework extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,23 +18,21 @@ public class EmpresaAbstract extends AbstractEntity {
 
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            mappedBy = "empresaAbstract")
-    private List<AtivoAbstract> ativoAbstracts;
+            mappedBy = "empresaFramework")
+    private List<AtivoFramework> ativo;
 
-    public EmpresaAbstract() { }
+    public EmpresaFramework() { }
 
-    public EmpresaAbstract(String nome, Long cnpj, List<AtivoAbstract> ativoAbstracts) {
+    public EmpresaFramework(String nome, Long cnpj, List<AtivoFramework> ativoAbstracts) {
         this.nome = nome;
         this.cnpj = cnpj;
-        this.ativoAbstracts = ativoAbstracts;
+        this.ativo = ativoAbstracts;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -55,11 +53,11 @@ public class EmpresaAbstract extends AbstractEntity {
         this.cnpj = cnpj;
     }
 
-    public List<AtivoAbstract> getAtivos() {
-        return ativoAbstracts;
+    public List<AtivoFramework> getAtivos() {
+        return ativo;
     }
 
-    public void setAtivos(List<AtivoAbstract> ativoAbstracts) {
-        this.ativoAbstracts = ativoAbstracts;
+    public void setAtivos(List<AtivoFramework> ativo) {
+        this.ativo = ativo;
     }
 }

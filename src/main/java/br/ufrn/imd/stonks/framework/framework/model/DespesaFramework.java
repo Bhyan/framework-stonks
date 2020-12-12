@@ -2,12 +2,11 @@ package br.ufrn.imd.stonks.framework.framework.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "carteira")
-public class Despesa extends AbstractEntity {
+public class DespesaFramework extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,40 +15,38 @@ public class Despesa extends AbstractEntity {
     @ManyToOne
     @NotNull(message = "É preciso definir um usuario.")
     @JoinColumn(name = "usuario_id")
-    private UsuarioAbstract usuario;
+    private UsuarioFramework usuario;
 
-    @OneToMany(mappedBy = "despesa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<DespesaAtivo> carteiraAtivos;
+    @OneToMany(mappedBy = "despesaFramework", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<DespesaAtivoFramework> carteiraAtivos;
 
-    public Despesa(@NotNull(message = "É preciso definir um usuario.") UsuarioAbstract usuario) {
+    public DespesaFramework(@NotNull(message = "É preciso definir um usuario.") UsuarioFramework usuario) {
         this.usuario = usuario;
     }
 
-    public Despesa() { }
+    public DespesaFramework() { }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public UsuarioAbstract getUsuario() {
+    public UsuarioFramework getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(UsuarioAbstract usuario) {
+    public void setUsuario(UsuarioFramework usuario) {
         this.usuario = usuario;
     }
 
-    public Set<DespesaAtivo> getCarteiraAtivos() {
+    public Set<DespesaAtivoFramework> getCarteiraAtivos() {
         return carteiraAtivos;
     }
 
-    public void setCarteiraAtivos(Set<DespesaAtivo> carteiraAtivos) {
+    public void setCarteiraAtivos(Set<DespesaAtivoFramework> carteiraAtivos) {
         this.carteiraAtivos = carteiraAtivos;
     }
 }

@@ -1,7 +1,6 @@
 package br.ufrn.imd.stonks.framework.framework.service;
 
-import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivo;
-import br.ufrn.imd.stonks.framework.framework.model.UsuarioAbstract;
+import br.ufrn.imd.stonks.framework.framework.model.UsuarioFramework;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public abstract class EmailServiceAbstract<T> {
 
-    public Boolean enviarEmail(String mensagemEmail, UsuarioAbstract usuario, String destinatario, String assunto) {
+    public Boolean enviarEmail(String mensagemEmail, UsuarioFramework usuario, String destinatario, String assunto) {
         JavaMailSenderImpl mailSender = configurarHost();
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();

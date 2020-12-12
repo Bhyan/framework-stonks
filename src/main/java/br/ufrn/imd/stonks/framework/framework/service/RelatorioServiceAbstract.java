@@ -1,8 +1,8 @@
 package br.ufrn.imd.stonks.framework.framework.service;
 
-import br.ufrn.imd.stonks.framework.framework.model.Despesa;
-import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivo;
-import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoValorAbstract;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaFramework;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoFramework;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoValorFramework;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -10,19 +10,19 @@ import java.util.List;
 public abstract class RelatorioServiceAbstract {
 
     @Autowired
-    DespesaServiceAbstract despesaServiceAbstract;
+    private DespesaServiceAbstract despesaService;
 
     @Autowired
-    DespesaAtivoService despesaAtivoService;
+    private DespesaAtivoServiceAbstract despesaAtivoService;
 
-    public abstract List<DespesaAtivoValorAbstract> listarDespesasAtivoValor(List<DespesaAtivo> despesaAtivos);
+    public abstract List<DespesaAtivoValorFramework> listarDespesasAtivoValor(List<DespesaAtivoFramework> despesaAtivos);
 
-    public List<DespesaAtivoValorAbstract> gerarDadosRelatorio() {
-        Despesa despesa = despesaServiceAbstract.despesaByUsuario();
+    public List<DespesaAtivoValorFramework> gerarDadosRelatorio() {
+        DespesaFramework despesa = despesaService.despesaByUsuario();
 
-        List<DespesaAtivo> despesaAtivoList = despesaAtivoService.findByAtivosDespesa(despesa.getId(), null);
+        List<DespesaAtivoFramework> despesaAtivoList = despesaAtivoService.findByAtivosDespesa(despesa.getId(), null);
 
-        List<DespesaAtivoValorAbstract> despesaAtivoValorAbstractList = listarDespesasAtivoValor(despesaAtivoList);
+        List<DespesaAtivoValorFramework> despesaAtivoValorAbstractList = listarDespesasAtivoValor(despesaAtivoList);
 
         return despesaAtivoValorAbstractList;
     }

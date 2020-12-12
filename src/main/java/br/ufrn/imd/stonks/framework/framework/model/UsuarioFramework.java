@@ -6,7 +6,11 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "usuario")
-public abstract class UsuarioAbstract extends AbstractEntity {
+public class UsuarioFramework extends AbstractEntity {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private int id;
 
     @NotNull(message = "Nome é obrigatorio.")
     private String nome;
@@ -20,20 +24,17 @@ public abstract class UsuarioAbstract extends AbstractEntity {
     @Column(unique = true)
     private String password;
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private int id;
-
-    public UsuarioAbstract(@NotNull(message = "Nome é obrigatorio.") String nome,
-                           @NotNull(message = "Email é obrigatorio.") @Email(message = "Email invalido") String email,
-                           @NotNull(message = "Senha é obrigatorio.") String password,
-                           Boolean status) {
+    public UsuarioFramework(@NotNull(message = "Nome é obrigatorio.") String nome,
+                            @NotNull(message = "Email é obrigatorio.") @Email(message = "Email invalido") String email,
+                            @NotNull(message = "Senha é obrigatorio.") String password,
+                            Boolean status) {
+        setStatus(status);
         this.nome = nome;
         this.email = email;
         this.password = password;
     }
 
-    public UsuarioAbstract() { }
+    public UsuarioFramework() { }
 
     public String getNome() {
         return nome;
@@ -59,12 +60,10 @@ public abstract class UsuarioAbstract extends AbstractEntity {
         this.password = password;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
