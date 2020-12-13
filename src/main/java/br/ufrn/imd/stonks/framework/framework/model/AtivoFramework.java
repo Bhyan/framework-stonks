@@ -13,15 +13,15 @@ public class AtivoFramework extends AbstractEntity {
     @Column(unique = true, nullable = false)
     private String codigo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "empresa_id", nullable = false)
-    private EmpresaFramework empresa;
+    private EmpresaFramework empresa;*/
 
     public AtivoFramework() { }
 
-    public AtivoFramework(String codigo, EmpresaFramework empresa) {
+    public AtivoFramework(String codigo/*, EmpresaFramework empresa*/) {
         this.codigo = codigo;
-        this.empresa = empresa;
+//        this.empresa = empresa;
     }
 
     public Integer getId() {
@@ -40,11 +40,11 @@ public class AtivoFramework extends AbstractEntity {
         this.codigo = codigo;
     }
 
-    public EmpresaFramework getEmpresa() {
+    /*public EmpresaFramework getEmpresa() {
         return empresa;
     }
 
     public void setEmpresa(EmpresaFramework empresaAbstract) {
         this.empresa = empresaAbstract;
-    }
+    }*/
 }

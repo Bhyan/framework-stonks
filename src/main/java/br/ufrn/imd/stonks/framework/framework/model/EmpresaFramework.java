@@ -16,17 +16,17 @@ public class EmpresaFramework extends AbstractEntity {
     @Column(nullable = false)
     private Long cnpj;
 
-    @OneToMany(cascade = CascadeType.ALL,
+   /* @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "empresa")
-    private List<AtivoFramework> ativo;
+    private List<AtivoFramework> ativo;*/
 
     public EmpresaFramework() { }
 
-    public EmpresaFramework(String nome, Long cnpj, List<AtivoFramework> ativoAbstracts) {
+    public EmpresaFramework(String nome, Long cnpj/*, List<AtivoFramework> ativoAbstracts*/) {
         this.nome = nome;
         this.cnpj = cnpj;
-        this.ativo = ativoAbstracts;
+//        this.ativo = ativoAbstracts;
     }
 
     public Integer getId() {
@@ -52,12 +52,12 @@ public class EmpresaFramework extends AbstractEntity {
     public void setCnpj(Long cnpj) {
         this.cnpj = cnpj;
     }
-
+/*
     public List<AtivoFramework> getAtivos() {
         return ativo;
     }
 
     public void setAtivos(List<AtivoFramework> ativo) {
         this.ativo = ativo;
-    }
+    }*/
 }
