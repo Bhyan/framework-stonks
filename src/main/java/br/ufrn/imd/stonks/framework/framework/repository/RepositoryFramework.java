@@ -8,9 +8,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.List;
 
 @NoRepositoryBean
-public interface AbstractRepository <T extends AbstractEntity> extends JpaRepository<T,Integer> {
+public interface RepositoryFramework<T extends AbstractEntity> extends JpaRepository<T,Integer> {
 
     @Override
     @Query(value = "SELECT * FROM #{#entityName}", nativeQuery=true)
-    List<T> findAll();
+    public List<T> findAll();
 }

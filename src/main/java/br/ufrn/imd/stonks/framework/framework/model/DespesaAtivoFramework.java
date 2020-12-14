@@ -7,7 +7,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-public class DespesaAtivo extends AbstractEntity {
+@Table(name = "carteira_ativo")
+public class DespesaAtivoFramework extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,12 +17,12 @@ public class DespesaAtivo extends AbstractEntity {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "despesa_id")
-    private Despesa despesa;
+    private DespesaFramework despesa;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "ativo_id")
-    private AtivoAbstract ativoAbstract;
+    private AtivoFramework ativo;
 
     @Column(name = "valor")
     private double valor;
@@ -32,58 +33,44 @@ public class DespesaAtivo extends AbstractEntity {
     @Column( name = "data_transacao")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dataTransacao;
-//
-    @Enumerated(EnumType.STRING)
-    private Operacao operacao;
 
-
-    public DespesaAtivo(
-            @NotNull(message = "Despesa é obrigatoria.") Despesa despesa,
-            @NotNull(message = "Ativo é obrigatorio.") AtivoAbstract ativoAbstract,
+    public DespesaAtivoFramework(
+            @NotNull(message = "DespesaFramework é obrigatoria.") DespesaFramework despesa,
+            @NotNull(message = "Ativo é obrigatorio.") AtivoFramework ativo,
             double valor,
             int quantidade,
             Date dataTransacao) {
         this.despesa = despesa;
-        this.ativoAbstract = ativoAbstract;
+        this.ativo = ativo;
         this.valor = valor;
         this.quantidade = quantidade;
         this.dataTransacao = dataTransacao;
     }
 
-    public DespesaAtivo() { }
+    public DespesaAtivoFramework() { }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Despesa getDespesa() {
+    public DespesaFramework getDespesa() {
         return despesa;
     }
 
-    public void setDespesa(Despesa despesa) {
+    public void setDespesa(DespesaFramework despesa) {
         this.despesa = despesa;
     }
 
-    public AtivoAbstract getAtivoAbstract() {
-        return ativoAbstract;
+    public AtivoFramework getAtivo() {
+        return ativo;
     }
 
-    public void setAtivoAbstract(AtivoAbstract ativoAbstract) {
-        this.ativoAbstract = ativoAbstract;
-    }
-
-    public Operacao getOperacao() {
-        return operacao;
-    }
-
-    public void setOperacao(Operacao operacao) {
-        this.operacao = operacao;
+    public void setAtivo(AtivoFramework ativo) {
+        this.ativo = ativo;
     }
 
     public double getValor() {

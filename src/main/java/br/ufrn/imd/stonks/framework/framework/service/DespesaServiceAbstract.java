@@ -1,8 +1,9 @@
 package br.ufrn.imd.stonks.framework.framework.service;
 
 import br.ufrn.imd.stonks.framework.framework.exception.AbstractEntityException;
-import br.ufrn.imd.stonks.framework.framework.model.*;
-import br.ufrn.imd.stonks.framework.framework.repository.DespesaRepository;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoFramework;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaFramework;
+import br.ufrn.imd.stonks.framework.framework.model.UsuarioFramework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,27 +11,21 @@ import org.springframework.stereotype.Service;
 public abstract class DespesaServiceAbstract {
 
     @Autowired
-    private DespesaRepository despesaRepository;
+    private DespesaAtivoServiceAbstract despesaAtivoService;
 
-    @Autowired
-    private DespesaAtivoService despesaAtivoService;
+    public abstract DespesaAtivoFramework adicionarAtivo(DespesaFramework despesa, DespesaAtivoFramework despesaAtivo);
 
-    public abstract DespesaAtivo adicionarAtivo(Despesa despesa, DespesaAtivo despesaAtivo);
+    public abstract boolean removerAtivo(DespesaAtivoFramework despesaAtivo);
 
-    public abstract boolean removerAtivo(DespesaAtivo despesaAtivo);
+    public abstract DespesaFramework despesaByUsuario();
 
-    public abstract Despesa despesaByUsuario();
+    public abstract void salvarDespesa(DespesaFramework despesa);
 
-    public AbstractEntity visualisarCarteira() {
-
-        return null;
-    }
-
-    public void adicionar(DespesaAtivo despesaAtivo, UsuarioAbstract usuarioAbstract) throws AbstractEntityException {
-        Despesa despesa = despesaByUsuario();
+    public void adicionar(DespesaAtivoFramework despesaAtivo, UsuarioFramework usuarioAbstract) throws AbstractEntityException {
+        DespesaFramework despesa = despesaByUsuario();
 
         if (despesa == null) {
-            despesa = new Despesa(usuarioAbstract);
+            despesa = new DespesaFramework(usuarioAbstract);
             salvarDespesa(despesa);
         }
 
@@ -44,7 +39,7 @@ public abstract class DespesaServiceAbstract {
         }
     }
 
-    public String remover(DespesaAtivo despesaAtivo, UsuarioAbstract usuarioAbstract) throws AbstractEntityException{
+    public String remover(DespesaAtivoFramework despesaAtivo) throws AbstractEntityException{
         if(!removerAtivo(despesaAtivo)){
             throw new AbstractEntityException("Nao foi possivel remover a despesa");
         }
@@ -53,7 +48,4 @@ public abstract class DespesaServiceAbstract {
         }
     }
 
-    public void salvarDespesa(Despesa despesa) {
-        despesaRepository.save(despesa);
-    }
 }

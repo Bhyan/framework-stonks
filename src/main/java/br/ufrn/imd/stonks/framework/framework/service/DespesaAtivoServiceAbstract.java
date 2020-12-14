@@ -1,7 +1,8 @@
 package br.ufrn.imd.stonks.framework.framework.service;
 
-import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivo;
-import br.ufrn.imd.stonks.framework.framework.repository.DespesaAtivoRepository;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoFramework;
+import br.ufrn.imd.stonks.framework.framework.model.DespesaAtivoValorFramework;
+import br.ufrn.imd.stonks.framework.framework.repository.DespesaAtivoFrameworkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -10,20 +11,20 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class DespesaAtivoService {
+public abstract class DespesaAtivoServiceAbstract {
 
     @Autowired
-    DespesaAtivoRepository despesaAtivoRepository;
+    private DespesaAtivoFrameworkRepository despesaAtivoRepository;
 
-    public boolean isAlreadyPresent(DespesaAtivo despesaAtivo) {
+    public boolean isAlreadyPresent(DespesaAtivoFramework despesaAtivo) {
         return despesaAtivoRepository.findById(despesaAtivo.getId()).isPresent();
     }
 
-    public void salvar(DespesaAtivo despesaAtivo) {
+    public void salvar(DespesaAtivoFramework despesaAtivo) {
         despesaAtivoRepository.save(despesaAtivo);
     }
 
-    public List<DespesaAtivo> findByAtivosDespesa(int id, HashMap<String, String> params){
+    public List<DespesaAtivoFramework> findByAtivosDespesa(int id, HashMap<String, String> params){
         Sort.Direction direction = Sort.Direction.ASC;
         String sortBy = "id";
 
@@ -43,4 +44,6 @@ public class DespesaAtivoService {
 
         return despesaAtivoRepository.findAllByDespesaCompra(id, sort);
     }
+
+    public abstract List<DespesaAtivoValorFramework> gerarDadosRelatorio(List<DespesaAtivoFramework> ativos);
 }

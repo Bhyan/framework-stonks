@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Empresa extends AbstractEntity {
+@Table(name = "empresa")
+public class EmpresaFramework extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,19 +16,23 @@ public class Empresa extends AbstractEntity {
     @Column(nullable = false)
     private Long cnpj;
 
-    @OneToMany(cascade = CascadeType.ALL,
+   /* @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "empresa")
-    private List<AtivoAbstract> ativoAbstracts;
+    private List<AtivoFramework> ativo;*/
 
-    public Empresa() { }
+    public EmpresaFramework() { }
 
-    @Override
+    public EmpresaFramework(String nome, Long cnpj/*, List<AtivoFramework> ativoAbstracts*/) {
+        this.nome = nome;
+        this.cnpj = cnpj;
+//        this.ativo = ativoAbstracts;
+    }
+
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -47,12 +52,12 @@ public class Empresa extends AbstractEntity {
     public void setCnpj(Long cnpj) {
         this.cnpj = cnpj;
     }
-
-    public List<AtivoAbstract> getAtivos() {
-        return ativoAbstracts;
+/*
+    public List<AtivoFramework> getAtivos() {
+        return ativo;
     }
 
-    public void setAtivos(List<AtivoAbstract> ativoAbstracts) {
-        this.ativoAbstracts = ativoAbstracts;
-    }
+    public void setAtivos(List<AtivoFramework> ativo) {
+        this.ativo = ativo;
+    }*/
 }

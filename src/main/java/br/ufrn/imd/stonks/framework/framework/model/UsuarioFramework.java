@@ -1,16 +1,16 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public abstract class UsuarioAbstract extends AbstractEntity {
+@Entity
+@Table(name = "usuario")
+public class UsuarioFramework extends AbstractEntity {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private int id;
 
     @NotNull(message = "Nome é obrigatorio.")
     private String nome;
@@ -24,24 +24,17 @@ public abstract class UsuarioAbstract extends AbstractEntity {
     @Column(unique = true)
     private String password;
 
-    @Column(name = "status")
-    private Boolean status;
-
-    public UsuarioAbstract(@NotNull(message = "Nome é obrigatorio.") String nome,
-                           @NotNull(message = "Email é obrigatorio.") @Email(message = "Email invalido") String email,
-                           @NotNull(message = "Senha é obrigatorio.") String password,
-                           Boolean status) {
+    public UsuarioFramework(@NotNull(message = "Nome é obrigatorio.") String nome,
+                            @NotNull(message = "Email é obrigatorio.") @Email(message = "Email invalido") String email,
+                            @NotNull(message = "Senha é obrigatorio.") String password,
+                            Boolean status) {
+        setStatus(status);
         this.nome = nome;
         this.email = email;
         this.password = password;
-        this.status = status;
     }
 
-    public UsuarioAbstract() { }
-
-    public abstract Integer getId();
-
-    public abstract void setId(Integer id);
+    public UsuarioFramework() { }
 
     public String getNome() {
         return nome;
@@ -67,11 +60,11 @@ public abstract class UsuarioAbstract extends AbstractEntity {
         this.password = password;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public Integer getId() {
+        return id;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -1,24 +1,26 @@
 package br.ufrn.imd.stonks.framework.framework.model;
 
-public class DespesaAtivoValorAbstract {
-    private DespesaAtivo despesaAtivo;
+//@MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)
+public class DespesaAtivoValorFramework {
+    private DespesaAtivoFramework despesaAtivo;
     private Float valor;
 
-    public DespesaAtivoValorAbstract() {
+    public DespesaAtivoValorFramework() {
     }
 
-    public DespesaAtivoValorAbstract(
-            DespesaAtivo despesaAtivo,
+    public DespesaAtivoValorFramework(
+            DespesaAtivoFramework despesaAtivo,
             Float valor) {
         this.despesaAtivo = despesaAtivo;
         this.valor = valor;
     }
 
-    public DespesaAtivo getDespesaAtivo() {
+    public DespesaAtivoFramework getDespesaAtivo() {
         return despesaAtivo;
     }
 
-    public void setDespesaAtivo(DespesaAtivo despesaAtivo) {
+    public void setDespesaAtivo(DespesaAtivoFramework despesaAtivo) {
         this.despesaAtivo = despesaAtivo;
     }
 
